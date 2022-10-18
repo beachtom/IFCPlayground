@@ -16,8 +16,7 @@ import { IFCDOOR, IFCSPACE, IFCOPENINGELEMENT, IFCFURNISHINGELEMENT, IFCWALL, IF
   
   onMounted(async() => {
     const viewer = new IfcViewerAPI({ container: container.value });
-    viewer.IFC.setWasmPath(window.location.origin);
-    await viewer.IFC.loader.ifcManager.useWebWorkers(true, window.location.origin+'/IFCWorker.js');
+    await viewer.IFC.loader.ifcManager.useWebWorkers(true, window.location.origin+window.location.pathname+'IFCWorker.js');
     await viewer.IFC.loader.ifcManager.applyWebIfcConfig({COORDINATE_TO_ORIGIN: true,USE_FAST_BOOLS: true});
     await viewer.IFC.loader.ifcManager.parser.setupOptionalCategories({[IFCDOOR]:true,[IFCSPACE]: false,[IFCOPENINGELEMENT]: false});
     var model = await viewer.IFC.loadIfc(props.modelFile, false);
