@@ -17,7 +17,11 @@ jobs:
           npm i -g cpy-cli
           npm ci
           npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+     - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          folder: dist # The folder the action should deploy.
+          # Upload entire repository
+          path: './dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
