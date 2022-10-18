@@ -52,7 +52,7 @@ function closeModel() {
 
 <template>
   <b-navbar toggleable="false" dark="true" variant="primary">
-      <b-navbar-brand href="#"><img src="cu.png"/> IFCPlayground</b-navbar-brand>
+      <b-navbar-brand href="#"><img src="/public/cu.png"/> IFCPlayground</b-navbar-brand>
       <b-navbar-nav class="me-auto">
         <b-nav-form>
           <b-button v-b-toggle.sidebar :disabled="this.modelFile.data==null">Navigate Model</b-button>
