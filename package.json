@@ -5,8 +5,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "prebuild": "cpy ./node_modules/web-ifc/web-ifc.wasm public/;cpy ./node_modules/web-ifc/web-ifc-mt.wasm public/; cpy ./node_modules/web-ifc-three/IFCWorker.js public/; cpy ./node_modules/web-ifc-three/IFCWorker.js.map public/;",
-    "predev": "cpy ./node_modules/web-ifc/web-ifc.wasm public/;cpy ./node_modules/web-ifc/web-ifc-mt.wasm public/; cpy ./node_modules/web-ifc-three/IFCWorker.js public/; cpy ./node_modules/web-ifc-three/IFCWorker.js.map public/;",
+    "prebuild": "cpy --flat node_modules/web-ifc/web-ifc.wasm public/; cpy --flat ./node_modules/web-ifc/web-ifc-mt.wasm ./public/; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js ./public; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js.map ./public;",
+    "predev":   "cpy --flat node_modules/web-ifc/web-ifc.wasm public/; cpy --flat ./node_modules/web-ifc/web-ifc-mt.wasm ./public/; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js ./public; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js.map ./public;",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
