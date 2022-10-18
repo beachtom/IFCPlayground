@@ -9,10 +9,10 @@ import CodeExecutor from './components/CodeExecutor.vue'
 import Swal from 'sweetalert2'
 import { reactive } from 'vue'
 
-var modelFile = reactive({data:null})
-var ifcLoader = reactive({data:null});
-var modelId = reactive({data:null});
-var selectedObject = reactive({expressID:null});
+const modelFile = reactive({data:null})
+const ifcLoader = reactive({data:null});
+const modelId = reactive({data:null});
+const selectedObject = reactive({expressID:null});
 
 function help() {
  
