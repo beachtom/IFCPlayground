@@ -55,13 +55,13 @@ function closeModel() {
       <b-navbar-brand href="#"><img src="/public/cu.png"/> IFCPlayground</b-navbar-brand>
       <b-navbar-nav class="me-auto">
         <b-nav-form>
-          <b-button v-b-toggle.sidebar :disabled="this.modelFile.data==null">Navigate Model</b-button>
+          <b-button v-b-toggle.sidebar :disabled="modelFile.data==null">Navigate Model</b-button>
         </b-nav-form>
       </b-navbar-nav>
       <b-navbar-nav class="mr-auto">
         <b-nav-form>
-          <b-button @click="loadDialog()" :disabled="this.modelFile.data!=null">Open Model</b-button>&nbsp;&nbsp;  
-          <b-button @click="closeModel()" :disabled="this.modelFile.data==null">Close Model</b-button> 
+          <b-button @click="loadDialog()" :disabled="modelFile.data!=null">Open Model</b-button>&nbsp;&nbsp;  
+          <b-button @click="closeModel()" :disabled="modelFile.data==null">Close Model</b-button> 
         </b-nav-form>
       </b-navbar-nav>
   </b-navbar>
@@ -73,28 +73,28 @@ function closeModel() {
   <b-card no-body class="h-100">
     <b-tabs card class="h-100" fill content-class="h-100">
       <b-tab class="h-100" title="Model">
-        <IFCViewer :expressID="selectedObject.expressID" @objectSelected="objectSelected" v-if="this.modelFile.data!=null" :key="this.modelFile.data" @modelLoaded="modelLoaded" :modelFile="this.modelFile.data"/>
+        <IFCViewer :expressID="selectedObject.expressID" @objectSelected="objectSelected" v-if="modelFile.data!=null" :key="modelFile.data" @modelLoaded="modelLoaded" :modelFile="modelFile.data"/>
         <div class="h-100 w-100" v-else style="background-color: #a9a9a9;">
           Please open a model
         </div>
       </b-tab>
-      <b-tab v-if="selectedObject.expressID==null" class="h-100" title="Data" :disabled="this.modelFile.data==null">
+      <b-tab v-if="selectedObject.expressID==null" class="h-100" title="Data" :disabled="modelFile.data==null">
         Please select an IFC Element from the tree or the model view.
       </b-tab>
-      <b-tab v-else class="h-100" title="Data" :disabled="this.modelFile.data==null">
+      <b-tab v-else class="h-100" title="Data" :disabled="modelFile.data==null">
         <Suspense><DataViewer :ifcLoader="this.ifcLoader.data" :modelId="this.modelId.data" :expressID="this.selectedObject.expressID" :key="this.selectedObject.expressID" /></Suspense>
       </b-tab>
-      <b-tab v-if="selectedObject.expressID==null" class="h-100" title="Data Visualisation" :disabled="this.modelFile.data==null">
+      <b-tab v-if="selectedObject.expressID==null" class="h-100" title="Data Visualisation" :disabled="modelFile.data==null">
         Please select an IFC Element from the tree or the model view.
       </b-tab>
-      <b-tab  v-else class="h-100" title="Data Visualisation" :disabled="this.modelFile.data==null">
+      <b-tab  v-else class="h-100" title="Data Visualisation" :disabled="modelFile.data==null">
         <Suspense><DataVisualiser :ifcLoader="this.ifcLoader.data" :modelId="this.modelId.data" :expressID="this.selectedObject.expressID" :key="this.selectedObject.expressID" /></Suspense>
       </b-tab>
       <b-tab class="h-100" title="Programming" disabled>
         <CodeEditor/>
       </b-tab>
       <b-tab class="h-100" title="Visual Program" disabled lazy>
-        <Blockly v-if="this.modelFile.data!=null"/>
+        <Blockly v-if="modelFile.data!=null"/>
       </b-tab>
       <b-tab class="h-100" title="Code Executor" disabled>
         <CodeExecutor/>
