@@ -36,7 +36,7 @@ function loadDialog() {
       'aria-label': 'Please select your model'
       }
    }).then( (result) => {
-    this.modelFile.data = result.value;
+    modelFile.data = result.value;
    });
   }
 
@@ -45,7 +45,7 @@ function objectSelected(e) {
 }
 
 function closeModel() {
-  this.modelFile.data=null;
+  modelFile.data=null;
 }
 
 </script>
