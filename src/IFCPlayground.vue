@@ -67,7 +67,7 @@ function closeModel() {
   </b-navbar>
   <b-offcanvas id="sidebar" title="Navigate Model" bg-variant="dark" text-variant="light">
      <div class="px-3 py-2">
-      <Suspense><IFCTree @objectSelected="objectSelected" :ifcLoader="ifcLoader.data" :modelId="this.modelId.data" :key="ifcLoader.data" :expressID="selectedObject.expressID" /></Suspense>
+      <Suspense><IFCTree @objectSelected="objectSelected" :ifcLoader="ifcLoader.data" :modelId="modelId.data" :key="ifcLoader.data" :expressID="selectedObject.expressID" /></Suspense>
      </div>
   </b-offcanvas>  
   <b-card no-body class="h-100">
@@ -82,13 +82,13 @@ function closeModel() {
         Please select an IFC Element from the tree or the model view.
       </b-tab>
       <b-tab v-else class="h-100" title="Data" :disabled="modelFile.data==null">
-        <Suspense><DataViewer :ifcLoader="ifcLoader.data" :modelId="this.modelId.data" :expressID="this.selectedObject.expressID" :key="this.selectedObject.expressID" /></Suspense>
+        <Suspense><DataViewer :ifcLoader="ifcLoader.data" :modelId="modelId.data" :expressID="selectedObject.expressID" :key="selectedObject.expressID" /></Suspense>
       </b-tab>
       <b-tab v-if="selectedObject.expressID==null" class="h-100" title="Data Visualisation" :disabled="modelFile.data==null">
         Please select an IFC Element from the tree or the model view.
       </b-tab>
       <b-tab  v-else class="h-100" title="Data Visualisation" :disabled="modelFile.data==null">
-        <Suspense><DataVisualiser :ifcLoader="ifcLoader.data" :modelId="this.modelId.data" :expressID="this.selectedObject.expressID" :key="this.selectedObject.expressID" /></Suspense>
+        <Suspense><DataVisualiser :ifcLoader="ifcLoader.data" :modelId="modelId.data" :expressID="selectedObject.expressID" :key="selectedObject.expressID" /></Suspense>
       </b-tab>
       <b-tab class="h-100" title="Programming" disabled>
         <CodeEditor/>
