@@ -1,0 +1,36 @@
+{
+  "name": "ifcplayground",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "prebuild": "cpy ./node_modules/web-ifc/web-ifc.wasm public/;cpy ./node_modules/web-ifc/web-ifc-mt.wasm public/; cpy ./node_modules/web-ifc-three/IFCWorker.js public/; cpy ./node_modules/web-ifc-three/IFCWorker.js.map public/;",
+    "predev": "cpy ./node_modules/web-ifc/web-ifc.wasm public/;cpy ./node_modules/web-ifc/web-ifc-mt.wasm public/; cpy ./node_modules/web-ifc-three/IFCWorker.js public/; cpy ./node_modules/web-ifc-three/IFCWorker.js.map public/;",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@sweetalert2/theme-borderless": "^5.0.12",
+    "@vueuse/core": "^9.3.0",
+    "blockly": "^9.0.0",
+    "bootstrap-vue-3": "^0.3.7",
+    "dagre": "^0.8.5",
+    "monaco-editor": "^0.34.0",
+    "sass-loader": "^13.0.2",
+    "sweetalert2": "^11.4.35",
+    "v-network-graph": "^0.6.10",
+    "vue": "^3.2.38",
+    "vue3-treeview": "^0.4.0",
+    "web-ifc-viewer": "^1.0.213"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vitejs/plugin-vue": "^3.0.3",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "vite": "^3.0.9"
+  }
+}
