@@ -6,12 +6,13 @@
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "prebuild": "cpy --flat node_modules/web-ifc/web-ifc.wasm public/; cpy --flat ./node_modules/web-ifc/web-ifc-mt.wasm ./public/; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js ./public; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js.map ./public;",
-    "predev":   "cpy --flat node_modules/web-ifc/web-ifc.wasm public/; cpy --flat ./node_modules/web-ifc/web-ifc-mt.wasm ./public/; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js ./public; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js.map ./public;",
+    "predev": "cpy --flat node_modules/web-ifc/web-ifc.wasm public/; cpy --flat ./node_modules/web-ifc/web-ifc-mt.wasm ./public/; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js ./public; cpy --flat ./node_modules/web-ifc-three/IFCWorker.js.map ./public;",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "@sweetalert2/theme-borderless": "^5.0.12",
     "@vueuse/core": "^9.3.0",
+    "axios": "^1.1.3",
     "blockly": "^9.0.0",
     "bootstrap-vue-3": "^0.3.7",
     "dagre": "^0.8.5",

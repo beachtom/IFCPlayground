@@ -7,18 +7,20 @@ import DataVisualiser from './components/DataVisualiser.vue'
 import Blockly from './components/Blockly.vue'
 import CodeExecutor from './components/CodeExecutor.vue'
 import Swal from 'sweetalert2'
-import { reactive } from 'vue'
+import { reactive,ref } from 'vue'
+import axios from "axios"
 
 const modelFile = reactive({data:null})
 const ifcLoader = reactive({data:null});
 const modelId = reactive({data:null});
 const selectedObject = reactive({expressID:null});
+const tabIndex = ref(0);
 
-function help() {
- 
+async function help() {
+  var content= await axios.get(tabIndex.value+".html");
   Swal.fire(
     'Help',
-    'Help text to go here'
+    content.data
   );
 }
 
@@ -71,7 +73,7 @@ function closeModel() {
      </div>
   </b-offcanvas>  
   <b-card no-body class="h-100">
-    <b-tabs card class="h-100" fill content-class="h-100">
+    <b-tabs v-model="tabIndex" card class="h-100" fill content-class="h-100">
       <b-tab class="h-100" title="Model">
         <IFCViewer :expressID="selectedObject.expressID" @objectSelected="objectSelected" v-if="modelFile.data!=null" :key="modelFile.data" @modelLoaded="modelLoaded" :modelFile="modelFile.data"/>
         <div class="h-100 w-100" v-else style="background-color: #a9a9a9;">
