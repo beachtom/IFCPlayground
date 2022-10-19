@@ -102,10 +102,7 @@ function createEdge(source,target,label) {
 async function getInverseRelationships(expressID,depth) {
 	for (var i=0; i < relEntities.length;i++) {
 			var pName = containsProp(relEntities[i],expressID);
-			if ( pName != null ) {
-				await generateNode(relEntities[i].expressID,depth+1,false,true);
-				createEdge(expressID,relEntities[i].expressID,pName);
-			}
+			if ( pName != null ) await generateNode(relEntities[i].expressID,depth+1,false,true);
 	}
 }
 
@@ -122,12 +119,12 @@ async function generateNode(expressID,depth,root,relationship) {
 				for (var x=0; x < nativeData[keys[i]].length ;x++) {
 					if (nativeData[keys[i]][x].type ==5 ) {
 						await generateNode(nativeData[keys[i]][x].value,depth+1,false,false);
-						createEdge(nativeData[keys[i]][x].value,expressID,keys[i]);
+						createEdge(expressID,nativeData[keys[i]][x].value,keys[i]);
 					}
 				}
 			} else if (nativeData[keys[i]].type ==5 ) {
 			await generateNode(nativeData[keys[i]].value,depth+1,false,false);
-			createEdge(nativeData[keys[i]].value,expressID,keys[i]);
+			createEdge(expressID,nativeData[keys[i]].value,keys[i]);
 		}
 	}
 	if (depth <= maxDepth) await getInverseRelationships(expressID,depth);
@@ -148,7 +145,19 @@ const configs = reactive( vNG.defineConfigs({
 				height: 10,
 		    color: node => node.root ? "red" : "blue"
       }
-    }
+    },
+		edge:{
+			marker: {
+				target: {
+	          type: "arrow",
+	          width: 4,
+	          height: 4,
+	          margin: -1,
+	          units: "strokeWidth",
+	          color: null,
+	        }
+				}
+		}
 }));
 
 layout();
@@ -157,7 +166,7 @@ layout();
 <template>
   <v-network-graph class="graph" :nodes="nodes" :edges="edges" :layouts="layouts" :configs="configs">
 		<template #edge-label="{ edge, ...slotProps }">
-			<v-edge-label :text="edge.label+'->'" align="center" vertical-align="above" v-bind="slotProps" />
+			<v-edge-label :text="edge.label" align="center" vertical-align="above" v-bind="slotProps" />
 		</template>
 	</v-network-graph>
 </template>
