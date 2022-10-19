@@ -28,7 +28,8 @@ typeData.value= await props.ifcLoader.ifcManager.getItemProperties(props.modelId
 
 for (var i=0; i < data.length;i++) {
 	var itemArr = {};
-	itemArr.name=data[i].Name.value;
+	if (data[i].Name==null) itemArr.name="";
+	else itemArr.name=data[i].Name.value;
 	itemArr.properties={};
 	if (data[i].Quantities!=null) {
 		for (var x=0; x < data[i].Quantities.length;x++) itemArr.properties[data[i].Quantities[x].Name.value] = getValue(data[i].Quantities[x]);
