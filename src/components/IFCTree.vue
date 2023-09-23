@@ -49,7 +49,7 @@ async function parseModelItem(inItem) {
 
 watch(() => props.expressID, async (newValue) => { 
 	var prop = await props.ifcLoader.ifcManager.getItemProperties(props.modelId,newValue);
-	var type = props.ifcLoader.ifcManager.getIfcType(props.modelId,newValue);
+	var type = "";
 	var name = "";
 	if (prop.Name != null && prop.Name.value !=""  ) name=generateName(type)+prop.Name.value;
 	else if (prop.LongName != null && prop.LongName.value !="") name=generateName(type)+prop.LongName.value;

@@ -74,7 +74,7 @@ function generateName(item) {
 	} 
 
 	if (name==null) name=""+item.expressID;
-	type=props.ifcLoader.ifcManager.getIfcType(props.modelId,item.expressID);
+	type="";//props.ifcLoader.ifcManager.getIfcType(props.modelId,item.expressID);
 	if (type != null) {
 		var type=type.replace("IFC","");
 		name = "("+type+")"+name;
